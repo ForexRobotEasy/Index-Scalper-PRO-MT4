@@ -1,0 +1,159 @@
+
+
+// =============================================================================
+
+// Index Scalper PRO MT4
+
+// Author: [Your Name]
+
+// Date: [Date]
+
+// =============================================================================
+
+
+
+// Define input parameters
+
+input double lotSize = 0.01; // Lot size for each trade
+
+input double stopLoss = 10; // Stop loss in pips
+
+input double takeProfit = 20; // Take profit in pips
+
+input double maxSpread = 3; // Maximum allowed spread in pips
+
+
+
+// Define global variables
+
+int ticket = 0; // Order ticket number
+
+double entryPrice = 0; // Entry price of the current trade
+
+double currentPrice = 0; // Current price
+
+double profit = 0; // Profit of the current trade
+
+
+
+// Initialize the expert advisor
+
+void OnInit()
+
+{
+
+    // Add necessary initialization code here
+
+    }
+
+
+
+    // Handle each tick of the market
+
+    void OnTick()
+
+    {
+
+        // Check if there is an open position
+
+            if (ticket == 0)
+
+                {
+
+                        // Check if conditions are met to open a new position
+
+                                if (IsEntryConditionMet())
+
+                                        {
+
+                                                    // Open a new position
+
+                                                                ticket = OpenPosition();
+
+                                                                        }
+
+                                                                            }
+
+                                                                                else
+
+                                                                                    {
+
+                                                                                            // Update the current price
+
+                                                                                                    currentPrice = MarketInfo(Symbol(), MODE_BID);
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                            // Check if stop loss or take profit levels are reached
+                                                                                                            
+                                                                                                                    if (currentPrice <= entryPrice - stopLoss || currentPrice >= entryPrice + takeProfit)
+                                                                                                                    
+                                                                                                                            {
+                                                                                                                            
+                                                                                                                                        // Close the position
+                                                                                                                                        
+                                                                                                                                                    ClosePosition();
+                                                                                                                                                    
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                            // Reset global variables
+                                                                                                                                                                            
+                                                                                                                                                                                        ticket = 0;
+                                                                                                                                                                                        
+                                                                                                                                                                                                    entryPrice = 0;
+                                                                                                                                                                                                    
+                                                                                                                                                                                                                currentPrice = 0;
+                                                                                                                                                                                                                
+                                                                                                                                                                                                                            profit = 0;
+                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                        // Check if conditions are met to open a new position
+                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                        bool IsEntryConditionMet()
+                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                            // Add necessary entry condition code here
+                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                return true;
+                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                // Open a new position
+                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                int OpenPosition()
+                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                {
+                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                    // Add necessary code to open a new position here
+                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                        return 0;
+                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                        // Close the current position
+                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                        void ClosePosition()
+                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                        {
+                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                            // Add necessary code to close the current position here
+                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                            // Add necessary helper functions here
+                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                            
